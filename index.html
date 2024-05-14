@@ -9,43 +9,83 @@
   </head>
   <body>
     <div class="news__cards">
+      <!-- pop up -->
       <div class="card">
         <img class="card__image-img" src="./img/news1.jpg" />
-        <div class="card__title"><p>Header</p></div>
-        <div class="card__text">
-          <p>
-            Text text text texttext textteexttexttext texttext text text text
-            text text text text text
-          </p>
+        <div class="card__body">
+          <div class="card__content">
+            <div class="card__title"><p>Header</p></div>
+            <div class="card__text">
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt,
+                ipsam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae unde aut libero, reiciendis ab exercitationem minus quibusdam labore amet? 
+              </p>
+            </div>
+          </div>
+          <div class="card__btn"><a href="#openModal">Подробнее</a></div>
         </div>
-
-        <button class="card__btn">Подробнее</button>
       </div>
 
-      <div class="card">
+      <div id="openModal" class="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title">Header</h3>
+              <a href="#close" title="Close" class="close">×</a>
+            </div>
+            <div class="modal-body">    
+              <img class="modal__image" src="./img/news1.jpg" />Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt,
+              ipsam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae unde aut libero, reiciendis ab exercitationem minus quibusdam labore amet? <br/><br/>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur labore quae animi fugit numquam aliquid perferendis reiciendis dicta repellat, dolore odio totam suscipit sunt minus itaque consequuntur, fuga corporis ducimus. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos repellendus, incidunt maxime, nihil debitis totam blanditiis, nostrum est laudantium nemo neque excepturi voluptatum! Optio, omnis esse harum in veritatis magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate nulla aut quis delectus optio aspernatur necessitatibus, reprehenderit odio totam sunt! Pariatur, natus cum exercitationem aperiam aut magnam mollitia esse incidunt.
+                <div class="card__btn-modal"><a href="#close" title="Close" class="">Закрыть</a></div>
+                
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- cut -->
+      <div class="card_cut">
         <img class="card__image-img" src="./img/news2.jpg" />
         <div class="card__title"><p>Header</p></div>
         <div class="card__text">
-          <p>
-            Text text text texttext texttext text text texttexttexttext text
-            text text text text
-          </p>
+          <input
+            type="checkbox"
+            class="read-more-checker"
+            id="read-more-checker"
+          />
+          <div class="limiter">
+            <!-- Здесь сам контент который должен будет скрываться / раскрываться -->
+            <div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
+              veritatis doloribus perspiciatis quae vero ab ut saepe praesentium
+              eum voluptates ad vel nesciunt dolores voluptas, fugit suscipit?
+              Totam, nobis maiores. Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Quidem maxime vero, perspiciatis ex ratione sint
+              veritatis. Tenetur ea voluptates, magni tempora porro mollitia aut
+              adipisci inventore repudiandae asperiores corrupti velit?
+            </div>
+
+            <div class="bottom"></div>
+          </div>
+          <label for="read-more-checker" class="read-more-button"></label>
         </div>
-        <button class="card__btn">Подробнее</button>
       </div>
 
       <div class="card">
         <img class="card__image-img" src="./img/news3.jpg" />
-        <div class="card__title"><p>Header</p></div>
-        <div class="card__text">
-          <p>
-            Text text text texttext texttext text text texttexttexttext text
-            text text text text text text text texttext text text text text text
-            text texttext text text text texttexttexttexttext texttext text text
-            text text text text text text
-          </p>
+        <div class="card__body">
+          <div class="card__content">
+            <div class="card__title"><p>Header</p></div>
+            <div class="card__text">
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt,
+                ipsam.
+              </p>
+            </div>
+          </div>
+          <div class="card__btn">Подробнее</div>
         </div>
-        <button class="card__btn">Подробнее</button>
       </div>
     </div>
   </body>

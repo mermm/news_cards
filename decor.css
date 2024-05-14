@@ -7,18 +7,31 @@ body {
   font-family: Roboto;
   background: #edf3ff;
   font-size: 24px;
-  width: 1440px;
-  height: 1024px;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+
+}
 .news__cards {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
   width: 100%;
+  margin: 100px auto;
+}
+.card_cut {
+  min-height: 600px;
+  width: 400px;
 
-  top: 212px;
-  position: absolute;
+  box-shadow: 6px 6px 20px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+
+  background-color: #ffffff;
+
+  margin-top: 40px;
 }
 
 .card {
@@ -29,6 +42,15 @@ body {
   border-radius: 15px;
 
   background-color: #ffffff;
+
+  margin-top: 40px;
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 360px;
 }
 
 .card__image-img {
@@ -36,6 +58,8 @@ body {
   width: 400px;
 
   border-radius: 10px 10px 0 0;
+
+  object-fit: cover;
 }
 
 .card__title {
@@ -47,7 +71,8 @@ body {
 
 .card__text {
   width: 336px;
-  height: 196px;
+  /* height: 196px; */
+  text-align: justify;
 
   padding-top: 10px;
   padding-left: 32px;
@@ -68,10 +93,203 @@ body {
 
   position: relative;
   left: 168px;
-  top: 24px;
+  /* top: 24px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.card__btn:hover {
+.card__btn-modal {
+  width: 200px;
+  height: 60px;
+
+  border: none;
+  background-color: #618ec3;
+  border-radius: 11px;
+
+  font-family: Roboto;
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 500;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__btn:hover, .read-more-button:hover, .card__btn-modal:hover{
   background-color: #435e7e;
   color: #e1e8ff;
+}
+/* ----------------- */
+.limiter {
+  max-height: 255px;
+  overflow: hidden;
+  position: relative;
+}
+.limiter .bottom {
+  position: absolute; /* Если прыгает - можно попробовать sticky */
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  opacity: 1;
+  transition: 0.3s;
+}
+.read-more-checker {
+  opacity: 0;
+  position: absolute;
+}
+.read-more-checker:checked ~ .limiter {
+  max-height: none;
+}
+.read-more-checker:checked ~ .limiter .bottom {
+  opacity: 0;
+  transition: 0.3s;
+}
+.read-more-checker ~ .read-more-button:before {
+  content: "Подробнее";
+}
+.read-more-checker:checked ~ .read-more-button:before {
+  content: "Скрыть";
+}
+.read-more-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 60px;
+  border: none;
+  background-color: #618ec3;
+  border-radius: 11px;
+  color: rgb(255, 255, 255);
+  font-family: Roboto;
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: none;
+  margin: 10px 0 10px 140px;
+}
+
+
+/* ---------------------------------- */
+.modal {
+  position: fixed; /* фиксированное положение */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5); /* фон */
+  z-index: 1050;
+  opacity: 0; /* по умолчанию модальное окно прозрачно */
+  -webkit-transition: opacity 200ms ease-in;
+  -moz-transition: opacity 200ms ease-in;
+  transition: opacity 200ms ease-in; /* анимация перехода */
+  pointer-events: none; /* элемент невидим для событий мыши */
+  margin: 0;
+  padding: 0;
+}
+/* При отображении модального окно */
+.modal:target {
+  opacity: 1; /* делаем окно видимым */
+  pointer-events: auto; /* элемент видим для событий мыши */
+  overflow-y: auto; /* добавляем прокрутку по y, когда элемент не помещается на страницу */
+}
+/* ширина модального окна и его отступы от экрана */
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 500px;
+    margin: 30px auto; /* отображение окна по центру */
+  }
+}
+/* Стили для блока с контентом окна */
+.modal-content {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}
+@media (min-width: 768px) {
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+}
+/* Стили заголовка окна */
+.modal-header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 1px solid #eceeef;
+}
+.modal-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.5;
+  font-size: 44px;
+  font-weight: 500;
+}
+/* Стили кнопки "х" ("Закрыть")  */
+.close {
+  float: right;
+  font-family: sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.5;
+  text-decoration: none;
+}
+/* Стили для закрывающей кнопки в фокусе или наведении */
+.close:focus,
+.close:hover {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.75;
+}
+/* Стили блока основного содержимого окна */
+.modal-body {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 15px;
+  overflow: auto;
+  text-align: justify;
+}
+
+.modal__image {
+  width: 100%;
+  border-radius: 30px;
+
 }
